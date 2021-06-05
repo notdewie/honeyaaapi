@@ -23,7 +23,13 @@ class Person (models.Model):
         primary_key=True,
     )
 
-
+    swipePerson = models.ManyToManyField('self', through='SwipePerson', symmetrical=False)
 
     def __str__(self):
         return self.personName
+
+class SwipePerson (models.Model):
+    fromPerson = models.ForeignKey(Person, related_name='from_person' ,on_delete=models.CASCADE)
+    toPerson = models.ForeignKey(Person, related_name='to_person', on_delete=models.CASCADE)
+
+    liked = models.BooleanField()
