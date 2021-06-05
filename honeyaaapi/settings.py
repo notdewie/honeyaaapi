@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'honeyaaapi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'football',
+        'NAME': 'Honeyaa_data',
         'USER': 'postgres',
-        'PASSWORD': 'admin',
+        'PASSWORD': 'cuong28022000',
         'HOST': 'localhost',
     }
 }
