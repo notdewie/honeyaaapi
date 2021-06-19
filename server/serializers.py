@@ -3,7 +3,7 @@ from django.db import models
 from django.db.models import fields
 from rest_framework import serializers
 
-from .models import Interest, Person, SwipePerson, User, Oriented
+from .models import Interest, Person, Picture, SwipePerson, Oriented
 # from .models import Players
 
 # class PlayersSerializer(serializers.ModelSerializer):
@@ -11,10 +11,10 @@ from .models import Interest, Person, SwipePerson, User, Oriented
 #         model = Players
 #         fields = '__all__'
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model= User
-        fields = ('userName', 'userPassword')
+# class UserSerializer(serializers.HyperlinkedModelSerializer):
+#     class Meta:
+#         model= User
+#         fields = ('userName', 'userPassword')
 
 class PersonSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -34,4 +34,9 @@ class OrientedSerializer( serializers.HyperlinkedModelSerializer):
 class InterestSerializer (serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Interest
+        fields = '__all__'
+
+class PictureSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Picture
         fields = '__all__'

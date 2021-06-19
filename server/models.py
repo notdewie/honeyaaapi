@@ -9,30 +9,43 @@ from django.db.models.fields.related import OneToOneField
 #     agePlayer = models.IntegerField()
 
 # user table
-class User (models.Model):
-    userName = models.CharField(max_length=20)
-    userPassword = models.CharField(max_length=20)
+# class User (models.Model):
+#     _name = models.CharField(max_length=20)
 
-    def __str__(self):
-        return self.userName
+#     def __str__(self):
+#         return self._name
 
 # person table
 class Person (models.Model):
-    personName = models.CharField(max_length=20)
+    uid = models.TextField(null= True)
 
-    owner = models.OneToOneField(
-        User, 
-        on_delete=models.CASCADE,
-        primary_key=True,
-    )
+    _name = models.CharField(max_length=20)
+
+    # personName = models.CharField(max_length=20)
+
+    # owner = models.OneToOneField(
+    #     User, 
+    #     on_delete=models.CASCADE,
+    #     primary_key=True,
+    # )
 
     swipePerson = models.ManyToManyField('self', through='SwipePerson', symmetrical=False)
     interested = models.ManyToManyField('Interest')
     oriented = models.ForeignKey('Oriented', on_delete=models.SET_NULL, null=True)
 
 
+
     def __str__(self):
-        return self.personName
+        return self._name
+
+class Picture (models.Model):
+    picture = models.TextField()
+
+    owner = models.ForeignKey('Person', on_delete=models.CASCADE, null = False)
+
+    def __str__(self):
+        return self.picture
+
 
 # Person to Person third table
 class SwipePerson (models.Model):

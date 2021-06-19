@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-r_0un%_ezn4*%83!e=q%w6vbqtc@f1oilw4f83vkk#a*1+pfr1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['1764e2ff489f.ngrok.io']
 
 
 # Application definition
@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'honeyaaapi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Honeyaa_data',
+        'NAME': 'Honeyaa',
         'USER': 'postgres',
         'PASSWORD': 'cuong28022000',
         'HOST': 'localhost',
