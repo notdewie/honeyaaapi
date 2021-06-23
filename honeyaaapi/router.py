@@ -1,5 +1,4 @@
 # from server.viewsets import PlayerViewSet
-from django.conf.urls import url
 from server.viewsets import InterestViewSet, OrientedViewSet, PersonViewSet, PictureViewSet, SwipePersonViewSet
 from rest_framework import routers
 

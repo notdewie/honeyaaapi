@@ -24,7 +24,7 @@ from server import serializers
 class PersonViewSet(viewsets.ModelViewSet):
     queryset = Person.objects.all()
     serializer_class = PersonSerializer
-    lookup_field = 'uid'
+    # lookup_field = 'uid'
 
     # @action(detail=True, methods=['get'])
     # def get(self, request, pk = None):
@@ -34,10 +34,10 @@ class PersonViewSet(viewsets.ModelViewSet):
 
     #     return JsonResponse(data, safe=False)
     #     # return HttpResponse(query_json, content_type='application/json')
-    @action(detail=True, methods=['get'])
-    def get_queryset(self):
-        user = self.request.user
-        return Person.objects.filter(user=user)
+    # @action(detail=True, methods=['get'])
+    # def get_queryset(self):
+    #     user = self.request.user
+    #     return Person.objects.filter(user=user)
  
 class SwipePersonViewSet(viewsets.ModelViewSet):
     queryset = SwipePerson.objects.all()

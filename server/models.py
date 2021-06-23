@@ -20,6 +20,7 @@ class Person (models.Model):
     uid = models.TextField(null= True)
 
     _name = models.CharField(max_length=20)
+    # age = models.DecimalField()
 
     # personName = models.CharField(max_length=20)
 

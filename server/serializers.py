@@ -17,12 +17,30 @@ from .models import Interest, Person, Picture, SwipePerson, Oriented
 #         fields = ('userName', 'userPassword')
 
 class PersonSerializer(serializers.HyperlinkedModelSerializer):
+    url = serializers.HyperlinkedIdentityField(
+        view_name='person-detail',
+        # lookup_field = 'uid'
+    )
+
     class Meta:
         model = Person
-        lookup_field = 'uid'
+        # lookup_field = 'uid'
         fields = '__all__'
+        extra_kwargs = {
+            'url' : {'lookup_field' : 'uid'}
+        }
+
+class GetUIDSerializer(serializers.HyperlinkedModelSerializer):
+    # url = serializers.HyperlinkedIdentityField(
+    #     view_name='person-detail',
+    #     # lookup_field = 'uid'  
+    # )
+
+    class Meta:
+        model = Person
+        fields = ('id',)
         # extra_kwargs = {
-        #     'url' : {'lookup_field' : 'uid'}
+        #     'url' : {'lookup_field': 'uid'}
         # }
 
 
