@@ -19,7 +19,29 @@ from .models import Interest, Person, Picture, SwipePerson, Oriented
 class PersonSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Person
+        lookup_field = 'uid'
         fields = '__all__'
+        # extra_kwargs = {
+        #     'url' : {'lookup_field' : 'uid'}
+        # }
+
+
+    # def __init__(self, *args, **kwargs): 
+    #     super(PersonSerializer, sefl).__init__(*args, **kwargs)
+    #     request = self.context
+
+    # def __init__(self, *args, **kwargs):
+    #     super(PersonSerializer, self).__init__(*args, **kwargs)
+    #     request = self.context.get("request")
+    #     if request and request.query_params.get('fields'):
+    #         fields = request.query_params.get('fields')
+    #         if fields:
+    #             fields = fields.split(',')
+    #             allowed = set(fields)
+    #             existing = set(self.fields.keys())
+    #             for field_name in existing - allowed:
+    #                 self.fields.pop(field_name)
+
 
 class SwipePersonSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

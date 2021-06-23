@@ -1,5 +1,13 @@
+from typing import List
 from django.db.models import query
+from django.http import response
+import json
+from django.core import serializers as core_serializers
+from django.http.response import HttpResponse, JsonResponse
 from rest_framework import viewsets
+from rest_framework.response import Response
+from rest_framework.decorators import action
+from rest_framework.serializers import ListSerializer
 
 from .models import Interest, Oriented, Person, Picture, SwipePerson
 from .serializers import InterestSerializer, PersonSerializer, PictureSerializer, SwipePersonSerializer, OrientedSerializer
@@ -16,7 +24,21 @@ from server import serializers
 class PersonViewSet(viewsets.ModelViewSet):
     queryset = Person.objects.all()
     serializer_class = PersonSerializer
+    lookup_field = 'uid'
 
+    # @action(detail=True, methods=['get'])
+    # def get(self, request, pk = None):
+    #     data = list(Person.objects.values())
+    #     # queryset = Person.objects.all()
+    #     # query_json = core_serializers.serialize('json', queryset)
+
+    #     return JsonResponse(data, safe=False)
+    #     # return HttpResponse(query_json, content_type='application/json')
+    @action(detail=True, methods=['get'])
+    def get_queryset(self):
+        user = self.request.user
+        return Person.objects.filter(user=user)
+ 
 class SwipePersonViewSet(viewsets.ModelViewSet):
     queryset = SwipePerson.objects.all()
     serializer_class = SwipePersonSerializer
