@@ -5,8 +5,8 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 
 class getinfo(APIView):
-    def get (self, request):
-        person = Person.objects.filter(_name = 'cuongdo')
+    def get (self,request, uid ):
+        person = Person.objects.filter(uid = uid)
         serial = GetUIDSerializer(person, many = True)
         return Response(serial.data)
 

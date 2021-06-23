@@ -22,5 +22,5 @@ from .router import router
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/',include(router.urls)),
-    path('api/getinfo', getinfo.as_view())
+    path('api/getinfo/<uid>', getinfo.as_view())
 ]
