@@ -79,4 +79,4 @@ class InterestSerializer (serializers.HyperlinkedModelSerializer):
 class PictureSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Picture
-        fields = '__all__'
+        fields = ('picture',)
