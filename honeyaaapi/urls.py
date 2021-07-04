@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from server.views import getinfo, getpicture
+from server.views import getinfo, getlike, getlikedpersion, getpicture, getswipeperson, swipe
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
@@ -24,4 +24,9 @@ urlpatterns = [
     path('api/',include(router.urls)),
     path('api/getinfo/<uid>', getinfo.as_view()),
     path('api/getpicture/<uid>' , getpicture.as_view()),
+    path('api/getlikedperson/<uid>', getlikedpersion.as_view()),
+    path('api/getlike/<uid>', getlike.as_view()),
+    path('api/getswipeperson/<uid>', getswipeperson.as_view()),
+    path('api/swipe/<uid>', swipe.as_view()),
+
 ]
