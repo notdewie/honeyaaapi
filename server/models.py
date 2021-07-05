@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
 from django.db.models.fields import CharField
+from django.db.models.fields import related
 from django.db.models.fields.related import OneToOneField
 
 # class Players (models.Model):
@@ -32,6 +33,8 @@ class Person (models.Model):
     #     primary_key=True,
     # )
 
+    matchedPerson = models.ManyToManyField('self',related_name='matched_person', symmetrical = False)
+
     swipePerson = models.ManyToManyField('self', through='SwipePerson', symmetrical=False)
     interested = models.ManyToManyField('Interest')
     oriented = models.ForeignKey('Oriented', on_delete=models.SET_NULL, null=True)
@@ -48,6 +51,10 @@ class Picture (models.Model):
 
     def __str__(self):
         return self.picture
+
+# class MatchPerson (models.Model):
+#     person = models.ForeignKey(Person, related_name='person' ,on_delete=models.SET_NULL, null=True)
+#     match = models.ForeignKey(Person, related_name='match', on_delete=models.SET_NULL, null=True)
 
 
 # Person to Person third table
