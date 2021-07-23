@@ -3,7 +3,7 @@ from django.db import models
 from django.db.models import fields
 from rest_framework import serializers
 
-from .models import Interest, Person, Picture, SwipePerson, Oriented
+from .models import Interest, OneSignal, Person, Picture, SwipePerson, Oriented
 # from .models import Players
 
 # class PlayersSerializer(serializers.ModelSerializer):
@@ -60,6 +60,10 @@ class GetUIDSerializer(serializers.HyperlinkedModelSerializer):
     #             for field_name in existing - allowed:
     #                 self.fields.pop(field_name)
 
+class OneSignalSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        models = OneSignal
+        fields = '__all__'
 
 class SwipePersonSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

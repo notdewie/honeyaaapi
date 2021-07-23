@@ -9,8 +9,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.serializers import ListSerializer
 
-from .models import Interest, Oriented, Person, Picture, SwipePerson
-from .serializers import InterestSerializer, PersonSerializer, PictureSerializer, SwipePersonSerializer, OrientedSerializer
+from .models import Interest, OneSignal, Oriented, Person, Picture, SwipePerson
+from .serializers import InterestSerializer, OneSignalSerializer, PersonSerializer, PictureSerializer, SwipePersonSerializer, OrientedSerializer
 from server import serializers
 
 # class PlayerViewSet(viewsets.ModelViewSet):
@@ -38,6 +38,10 @@ class PersonViewSet(viewsets.ModelViewSet):
     # def get_queryset(self):
     #     user = self.request.user
     #     return Person.objects.filter(user=user)
+
+class OnesignalViewSet(viewsets.ModelViewSet):
+    queryset = OneSignal.objects.all()
+    serializers_class = OneSignalSerializer
  
 class SwipePersonViewSet(viewsets.ModelViewSet):
     queryset = SwipePerson.objects.all()

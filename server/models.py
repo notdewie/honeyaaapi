@@ -33,16 +33,20 @@ class Person (models.Model):
     #     primary_key=True,
     # )
 
-    matchedPerson = models.ManyToManyField('self',related_name='matched_person', symmetrical = False)
+    matchedPerson = models.ManyToManyField('self',related_name='matched_person', symmetrical = True, blank = True)
 
     swipePerson = models.ManyToManyField('self', through='SwipePerson', symmetrical=False)
     interested = models.ManyToManyField('Interest')
+
     oriented = models.ForeignKey('Oriented', on_delete=models.SET_NULL, null=True)
-
-
 
     def __str__(self):
         return self._name
+
+class OneSignal (models.Model):
+    oneSignalUID = models.TextField()
+    
+    owner = models.ForeignKey('Person', on_delete=models.CASCADE, null= True)
 
 class Picture (models.Model):
     picture = models.TextField()
